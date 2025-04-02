@@ -1,0 +1,23 @@
+name: "Build"
+
+on:
+  workflow_dispatch:  # Allows manual triggering from the GitHub Actions UI
+
+jobs:
+  build-windows:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v23
+
+      - name: Build and Upload Artifact
+        run: nix build -L --show-trace .#windows.installer
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: windows-installer
+          path: ./result
