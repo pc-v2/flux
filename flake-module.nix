@@ -123,7 +123,6 @@
         CARGO_BUILD_TARGET = "wasm32-unknown-unknown";
         doCheck = false;
       });
-      windows-installer = pkgs.callPackage ./windows/installer.nix { };
     };
   };
 }
