@@ -48,6 +48,8 @@
 
           web = pkgs.callPackage ./web/default.nix {
             inherit (config.packages) flux-wasm flux-gl-wasm;
+
+          windows-installer = pkgs.callPackage ./windows/installer.nix { };
           };
         };
       };
